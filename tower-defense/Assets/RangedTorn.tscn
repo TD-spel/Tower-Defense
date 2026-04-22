@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://oydyn1rk58w6"]
 
+[ext_resource type="Script" uid="uid://byb2svoitq2g5" path="res://Scripts/RangedTornScript.cs" id="1_7k5xj"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vi8y8"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_f7cmv"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_80hiw"]
+
 [node name="RangedTorn" type="StaticBody2D" unique_id=670863309]
+script = ExtResource("1_7k5xj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958654501]
 modulate = Color(0.48333848, 0.64936763, 1, 1)
@@ -14,3 +19,9 @@ shape = SubResource("CircleShape2D_vi8y8")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=503561696]
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_f7cmv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=692589559]
+scale = Vector2(26.76, 26.76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2095031064]
+shape = SubResource("CircleShape2D_80hiw")
