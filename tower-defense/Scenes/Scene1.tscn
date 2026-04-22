@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bjo8m0kkkvrl3"]
+
+[ext_resource type="PackedScene" uid="uid://4ihknco6mt4q" path="res://Assets/RangedTorn.tscn" id="1_bxtam"]
+
+[node name="Node2D" type="Node2D" unique_id=1542414079]
+
+[node name="Sprite2D" parent="." unique_id=1161379706 instance=ExtResource("1_bxtam")]
+position = Vector2(717, 560)
