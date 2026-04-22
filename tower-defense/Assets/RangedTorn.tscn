@@ -25,3 +25,6 @@ scale = Vector2(26.76, 26.76)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2095031064]
 shape = SubResource("CircleShape2D_80hiw")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnArea2dBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnArea2dBodyExited"]
