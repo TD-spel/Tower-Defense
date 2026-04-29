@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bakx4evbmavbu"]
+
+[ext_resource type="Script" uid="uid://dfdahbbi5dq2h" path="res://Scenes/Bullet.cs" id="1_xjght"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mw4s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjght"]
+
+[node name="bullet" type="CharacterBody2D" unique_id=1241105321]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_xjght")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065244830]
+scale = Vector2(0.26323017, 0.69494295)
+shape = SubResource("RectangleShape2D_4mw4s")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=1475650852]
+scale = Vector2(19.960001, 19.960001)
+mesh = SubResource("BoxMesh_xjght")
