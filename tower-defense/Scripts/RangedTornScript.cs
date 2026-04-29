@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class RangedTorn : StaticBody2D
+public partial class RangedTornScript : StaticBody2D
 {
 
 	//[Export] private List<Node2D> enemies = new List<Node2D>();

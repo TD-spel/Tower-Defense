@@ -14,9 +14,11 @@ rangedTower = ExtResource("2_kry3j")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1508930361]
 
 [node name="rangedTornButton" parent="CanvasLayer" unique_id=1684109991 instance=ExtResource("3_kry3j")]
-offset_left = 984.0
-offset_top = 151.0
-offset_right = 1051.0
-offset_bottom = 240.0
+light_mask = 1
+visibility_layer = 131
+offset_left = 983.0
+offset_top = 37.928
+offset_right = 1039.3359
+offset_bottom = 68.92799
 
 [connection signal="pressed" from="CanvasLayer/rangedTornButton" to="." method="_on_ranged_torn_button_pressed"]
