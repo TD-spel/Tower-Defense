@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://oydyn1rk58w6"]
 
 [ext_resource type="Script" uid="uid://byb2svoitq2g5" path="res://Scripts/RangedTornScript.cs" id="1_7k5xj"]
+[ext_resource type="PackedScene" uid="uid://bakx4evbmavbu" path="res://Scenes/bullet.tscn" id="2_se1e7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vi8y8"]
 
@@ -8,12 +9,17 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80hiw"]
 
-[node name="RangedTorn" type="StaticBody2D" unique_id=670863309]
+[node name="RangedTorn" type="StaticBody2D" unique_id=670863309 node_paths=PackedStringArray("weapon")]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_7k5xj")
+bulletScene = ExtResource("2_se1e7")
+weapon = NodePath("Weapon")
+bulletMoveSpeed = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958654501]
 modulate = Color(0.48333848, 0.64936763, 1, 1)
-scale = Vector2(5.7199984, 5.7199984)
+scale = Vector2(2.881375, 2.881375)
 shape = SubResource("CircleShape2D_vi8y8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=503561696]
@@ -21,10 +27,24 @@ scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_f7cmv")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=692589559]
-scale = Vector2(26.76, 26.76)
+scale = Vector2(13.4800005, 13.4800005)
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2095031064]
 shape = SubResource("CircleShape2D_80hiw")
 
+[node name="Weapon" type="Node2D" parent="." unique_id=846912608]
+position = Vector2(58, -4)
+scale = Vector2(0.503737, 0.503737)
+
+[node name="ColorRect" type="ColorRect" parent="Weapon" unique_id=1662799050]
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 33.0
+offset_bottom = 37.0
+scale = Vector2(0.3599981, 0.3599981)
+color = Color(0.2784314, 0.6313726, 0.8745098, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2dBodyEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="OnArea2dBodyExited"]

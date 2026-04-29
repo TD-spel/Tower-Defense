@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class EnemyScript : StaticBody2D
+public partial class EnemyScript : CharacterBody2D
 {
 	[Export]
 	private int enemyHP = 3;
@@ -27,6 +27,16 @@ public partial class EnemyScript : StaticBody2D
 		if (Input.IsKeyPressed(Key.A)) {
 			
 			this.Position += new Vector2(-enemyMoveSpeed, 0);
+		}
+
+		if (Input.IsKeyPressed(Key.W)) {
+			
+			this.Position += new Vector2(0, -enemyMoveSpeed);
+		}
+
+		if (Input.IsKeyPressed(Key.S)) {
+			
+			this.Position += new Vector2(0, enemyMoveSpeed);
 		}
 	}
 }
