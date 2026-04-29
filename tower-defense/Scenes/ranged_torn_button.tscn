@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bjy77hq5vam20"]
+
+[ext_resource type="Script" uid="uid://de332v6wjyqhq" path="res://Button.cs" id="1_hx8f1"]
+[ext_resource type="Texture2D" uid="uid://p60xj8mo8k88" path="res://icon.svg" id="2_4b5o8"]
+
+[node name="rangedTornButton" type="Button" unique_id=1684109991]
+light_mask = 128
+visibility_layer = 128
+offset_left = -1.0
+offset_right = 68.0
+offset_bottom = 93.0
+script = ExtResource("1_hx8f1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=761161373]
+position = Vector2(35, 47)
+scale = Vector2(0.515625, 0.71875)
+texture = ExtResource("2_4b5o8")
