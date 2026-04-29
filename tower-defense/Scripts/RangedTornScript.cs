@@ -1,57 +1,75 @@
 using Godot;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Threading.Tasks.Dataflow;
 
 public partial class RangedTornScript : StaticBody2D
 {
 
 	[Export] private PackedScene bulletScene;
 	[Export] private Node2D weapon;
-	[Export] private float bulletSpeed = 10;
+	[Export] private float fireRate = 1f;
+	[Export] private float bulletMoveSpeed = 10f;
 
+
+	private Timer shootTimer;
 	private List<EnemyScript> enemies;
 	public override void _Ready() {
- 			enemies= new List<EnemyScript>();
+		enemies= new List<EnemyScript>();
+
+		shootTimer = new Timer();
+		shootTimer.Timeout += OnTimerTimeout;
+
+		AddChild(shootTimer);
+		
 	}
 
 
 	public override void _Process(double delta) {
 		
 		if (enemies.Count > 0) {
+			if (shootTimer.IsStopped())
+			{
+				shootTimer.Start();
+			}
+			this.LookAt(enemies[0].GlobalPosition);
 
-			
-		}
+		} 
+		else { shootTimer.Stop(); }
 
-		if (Input.IsKeyPressed(Key.E)) {
-			
-			ShootEnemy();
-		}
 	}
 
 	public void OnArea2dBodyEntered(Node2D body) {
-		GD.Print(body.GetClass());
-		if (body is EnemyScript enemy){
+
+		if (body is EnemyScript enemy) {
+
 			enemies.Add(enemy);
 			GD.Print("Body Entered");
 		}
 	}
 
 	public void OnArea2dBodyExited(Node2D body) {
-		/*
-		enemies.Remove(body);
-		GD.Print("Body Exited");
-		*/
+		if (body is EnemyScript enemy) {
+
+			enemies.Remove(enemy);
+			GD.Print("Body Exited");
+		}
+		
 	}
 
+	private void OnTimerTimeout() {
+		ShootEnemy();
+	}
 
 	private void ShootEnemy() {
 		
-		var bullet = bulletScene.Instantiate<Bullet>();
+		if (enemies.Count > 0) {
+			var bullet = bulletScene.Instantiate<Bullet>();
 
-		bullet.GlobalPosition = weapon.GlobalPosition;
+			bullet.GlobalPosition = weapon.GlobalPosition;
 
-		bullet.Velocity = (enemies[0].GlobalPosition - bullet.GlobalPosition).Normalized() * bulletSpeed;
-
-
-		GetTree().CurrentScene.AddChild(bullet);
+			bullet.Velocity = (enemies[0].GlobalPosition - bullet.GlobalPosition).Normalized() * bulletMoveSpeed;
+			GetTree().CurrentScene.AddChild(bullet);	
+		}
 	}
 }
