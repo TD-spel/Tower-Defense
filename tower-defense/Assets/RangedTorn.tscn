@@ -43,7 +43,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shot",
-"speed": 6.0
+"speed": 5.0
 }]
 
 [node name="RangedTorn" type="StaticBody2D" unique_id=670863309 node_paths=PackedStringArray("weapon")]
@@ -89,6 +89,7 @@ rotation = -1.5695156
 scale = Vector2(2.904762, 2.6666665)
 sprite_frames = SubResource("SpriteFrames_td338")
 animation = &"shot"
+frame_progress = 0.124365345
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2dBodyEntered"]
