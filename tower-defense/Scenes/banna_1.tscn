@@ -310,12 +310,13 @@ position = Vector2(581, 328)
 [node name="enemypath1" type="Path2D" parent="." unique_id=177796454]
 curve = SubResource("Curve2D_djppv")
 
+[node name="PathFollow2D" type="PathFollow2D" parent="enemypath1" unique_id=1908888490]
+position = Vector2(534.7762, 145.91994)
+rotation = -0.330548
+progress = 950.7
+
 [node name="deathSown" type="Area2D" parent="." unique_id=1480096270]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="deathSown" unique_id=731845972]
 position = Vector2(1009.75, 442)
 shape = SubResource("RectangleShape2D_dcw7g")
-
-[node name="towers" type="Node" parent="." unique_id=769193523]
-
-[node name="enemies" type="Node" parent="." unique_id=392256203]
