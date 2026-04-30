@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bjo8m0kkkvrl3"]
 
-[ext_resource type="PackedScene" uid="uid://oydyn1rk58w6" path="res://Assets/RangedTorn.tscn" id="1_bxtam"]
-[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Assets/Enemy.tscn" id="2_pldgw"]
-[ext_resource type="PackedScene" uid="uid://bakx4evbmavbu" path="res://Scenes/bullet.tscn" id="3_80eni"]
+[ext_resource type="PackedScene" uid="uid://oydyn1rk58w6" path="res://Scenes/RangedTorn.tscn" id="1_bxtam"]
+[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="2_pldgw"]
 
 [node name="Node2D" type="Node2D" unique_id=1542414079]
 
@@ -12,4 +11,3 @@ position = Vector2(291, 207)
 [node name="RangedTorn" parent="." unique_id=670863309 instance=ExtResource("1_bxtam")]
 position = Vector2(719, 389)
 scale = Vector2(0.99417335, 0.99071074)
-bulletScene = ExtResource("3_80eni")
