@@ -86,24 +86,6 @@ public partial class RangedTornScript : StaticBody2D
 
 	}
 
-	public void OnArea2dBodyEntered(Node2D body) {
-
-		if (body is EnemyScript enemy) {
-
-			enemies.Add(enemy);
-			GD.Print("Body Entered");
-		}
-	}
-
-	public void OnArea2dBodyExited(Node2D body) {
-		if (body is EnemyScript enemy) {
-
-			enemies.Remove(enemy);
-			GD.Print("Body Exited");
-		}
-		
-	}
-
 	//Detta är funktionen som körs av timern
 	private void OnTimerTimeout() {
 		ShootEnemy();
