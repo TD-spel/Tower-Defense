@@ -19,7 +19,7 @@ bulletMoveSpeed = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958654501]
 modulate = Color(0.48333848, 0.64936763, 1, 1)
-scale = Vector2(2.881375, 2.881375)
+scale = Vector2(3.3943796, 3.3943796)
 shape = SubResource("CircleShape2D_vi8y8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=503561696]
@@ -27,15 +27,15 @@ scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_f7cmv")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=692589559]
-scale = Vector2(13.4800005, 13.4800005)
+scale = Vector2(15.880001, 15.880001)
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2095031064]
 shape = SubResource("CircleShape2D_80hiw")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=846912608]
-position = Vector2(58, -4)
-scale = Vector2(0.503737, 0.503737)
+position = Vector2(38, -3)
+scale = Vector2(0.5934231, 0.5934231)
 
 [node name="ColorRect" type="ColorRect" parent="Weapon" unique_id=1662799050]
 offset_left = -7.0
