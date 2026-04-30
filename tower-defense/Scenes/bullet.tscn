@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bakx4evbmavbu"]
 
 [ext_resource type="Script" uid="uid://dfdahbbi5dq2h" path="res://Scenes/Bullet.cs" id="1_xjght"]
+[ext_resource type="Texture2D" uid="uid://dkmwsnqfsk7pc" path="res://Assets/sprites/Lager 9.png" id="2_oduel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mw4s"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xjght"]
+size = Vector2(20, 24.999998)
 
 [node name="bullet" type="CharacterBody2D" unique_id=1241105321]
 collision_layer = 4
@@ -12,9 +12,13 @@ collision_mask = 8
 script = ExtResource("1_xjght")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065244830]
-scale = Vector2(0.2, 0.2)
+position = Vector2(-9.536743e-08, 0.49999982)
+rotation = -1.569939
+scale = Vector2(1.5737953, 1.5737953)
 shape = SubResource("RectangleShape2D_4mw4s")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=1475650852]
-scale = Vector2(19.960001, 19.960001)
-mesh = SubResource("BoxMesh_xjght")
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=515457950]
+light_mask = 2
+visibility_layer = 8
+scale = Vector2(2.270779, 2.2133436)
+texture = ExtResource("2_oduel")

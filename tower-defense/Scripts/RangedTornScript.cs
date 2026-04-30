@@ -11,12 +11,12 @@ public partial class RangedTornScript : StaticBody2D
 	[Export] private float fireRate = 1f;
 	[Export] private float bulletMoveSpeed = 10f;
 
-
+	private AnimatedSprite2D animatedSprite2D;
 	private Timer shootTimer;
 	private List<EnemyScript> enemies;
 	public override void _Ready() {
 		enemies= new List<EnemyScript>();
-
+		animatedSprite2D = GetNode<AnimatedSprite2D>("rangedTornSprite");
 		shootTimer = new Timer();
 		shootTimer.Timeout += OnTimerTimeout;
 
@@ -31,11 +31,16 @@ public partial class RangedTornScript : StaticBody2D
 			if (shootTimer.IsStopped())
 			{
 				shootTimer.Start();
+				
 			}
 			this.LookAt(enemies[0].GlobalPosition);
-
+			animatedSprite2D.Play("shot");
 		} 
-		else { shootTimer.Stop(); }
+		else { 
+			
+			shootTimer.Stop();
+			animatedSprite2D.Stop();
+		 }
 
 	}
 
