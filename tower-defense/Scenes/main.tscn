@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cdh3u8dsqbmaj" path="res://Scenes/banna_1.tscn" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://oydyn1rk58w6" path="res://Scenes/RangedTorn.tscn" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bjy77hq5vam20" path="res://Scenes/ranged_torn_button.tscn" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Assets/Enemy.tscn" id="5_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=2038645535]
 script = ExtResource("1_8gbba")
@@ -23,6 +23,6 @@ offset_right = 1039.3359
 offset_bottom = 68.92799
 
 [node name="Enemy" parent="." unique_id=556481276 instance=ExtResource("5_kry3j")]
-position = Vector2(51, 433)
+position = Vector2(109, 450)
 
 [connection signal="pressed" from="CanvasLayer/rangedTornButton" to="." method="_on_ranged_torn_button_pressed"]

@@ -2,12 +2,49 @@
 
 [ext_resource type="Script" uid="uid://byb2svoitq2g5" path="res://Scripts/RangedTornScript.cs" id="1_7k5xj"]
 [ext_resource type="PackedScene" uid="uid://bakx4evbmavbu" path="res://Scenes/bullet.tscn" id="2_se1e7"]
+[ext_resource type="Texture2D" uid="uid://c036cl87qe36j" path="res://Assets/sprites/Rangedtorn.png" id="3_2s66k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vi8y8"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_f7cmv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80hiw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koxum"]
+atlas = ExtResource("3_2s66k")
+region = Rect2(0, 0, 21, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1f3g"]
+atlas = ExtResource("3_2s66k")
+region = Rect2(23, 0, 21, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p82qe"]
+atlas = ExtResource("3_2s66k")
+region = Rect2(46, 0, 21, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvpik"]
+atlas = ExtResource("3_2s66k")
+region = Rect2(69, 0, 21, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_td338"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koxum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1f3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p82qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvpik")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 6.0
+}]
 
 [node name="RangedTorn" type="StaticBody2D" unique_id=670863309 node_paths=PackedStringArray("weapon")]
 collision_layer = 2
@@ -38,12 +75,20 @@ position = Vector2(38, -3)
 scale = Vector2(0.5934231, 0.5934231)
 
 [node name="ColorRect" type="ColorRect" parent="Weapon" unique_id=1662799050]
+visible = false
 offset_left = -7.0
 offset_top = -3.0
 offset_right = 33.0
 offset_bottom = 37.0
 scale = Vector2(0.3599981, 0.3599981)
 color = Color(0.2784314, 0.6313726, 0.8745098, 1)
+
+[node name="rangedTornSprite" type="AnimatedSprite2D" parent="." unique_id=1931565039]
+position = Vector2(4, 3.3912143e-10)
+rotation = -1.5695156
+scale = Vector2(2.904762, 2.6666665)
+sprite_frames = SubResource("SpriteFrames_td338")
+animation = &"shot"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2dBodyEntered"]

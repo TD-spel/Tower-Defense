@@ -11,7 +11,7 @@ public partial class RangedTornScript : StaticBody2D
 	[Export] private float fireRate = 1f;
 	[Export] private float bulletMoveSpeed = 10f;
 
-
+	private AnimatedSprite2D animatedSprite2D;
 	private Timer shootTimer;
 	private List<EnemyScript> enemies;
 
@@ -20,6 +20,12 @@ public partial class RangedTornScript : StaticBody2D
 		enemies= new List<EnemyScript>();
 
 		TimerSetup();
+		
+		shootTimer = new Timer();
+		shootTimer.Timeout += OnTimerTimeout;
+
+		AddChild(shootTimer);
+		
 	}
 
 
@@ -51,10 +57,10 @@ public partial class RangedTornScript : StaticBody2D
 	//Denna funktion sätter upp timern
 	private void TimerSetup() {
 		
-
+		animatedSprite2D = GetNode<AnimatedSprite2D>("rangedTornSprite");
+		
 		shootTimer = new Timer();
 		shootTimer.Timeout += OnTimerTimeout;
-
 		shootTimer.WaitTime = fireRate;
 
 		AddChild(shootTimer);
@@ -67,11 +73,35 @@ public partial class RangedTornScript : StaticBody2D
 			if (shootTimer.IsStopped())
 			{
 				shootTimer.Start();
+				
 			}
 			this.LookAt(enemies[0].GlobalPosition);
-
+			animatedSprite2D.Play("shot");
 		} 
-		else { shootTimer.Stop(); }
+		else { 
+			
+			shootTimer.Stop();
+			animatedSprite2D.Stop();
+		 }
+
+	}
+
+	public void OnArea2dBodyEntered(Node2D body) {
+
+		if (body is EnemyScript enemy) {
+
+			enemies.Add(enemy);
+			GD.Print("Body Entered");
+		}
+	}
+
+	public void OnArea2dBodyExited(Node2D body) {
+		if (body is EnemyScript enemy) {
+
+			enemies.Remove(enemy);
+			GD.Print("Body Exited");
+		}
+		
 	}
 
 	//Detta är funktionen som körs av timern
