@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://pgl3u8715eah"]
+
+[ext_resource type="Script" uid="uid://kd82m6qa23ix" path="res://Scripts/ValkyrieTornScript.cs" id="1_ipd87"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41r20"]
+height = 30.136995
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5mmoa"]
+
+[node name="Valkyrie" type="StaticBody2D" unique_id=589767315]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ipd87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1646023906]
+position = Vector2(0, -72)
+scale = Vector2(1, 4.7599964)
+shape = SubResource("CapsuleShape2D_41r20")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=382469670]
+scale = Vector2(19.526724, 15.307501)
+mesh = SubResource("CapsuleMesh_5mmoa")

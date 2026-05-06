@@ -7,9 +7,15 @@ public partial class Main : Node2D
 
 	Node2D lvl;
 	[Export] private PackedScene rangedTower;
+	[Export] private PackedScene valkyrieTower;
+
+	StaticBody2D tower;
+	Vector2 mousePosition;
 
 	bool isPlacing = false;
 	bool isplaced = false;
+
+	private float towerIndex;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,19 +26,27 @@ public partial class Main : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{ 
-		var mousePosision = GetGlobalMousePosition();
+		mousePosition = GetGlobalMousePosition();
 		if( isPlacing == true  && Input.IsActionJustPressed("leftClick"))
 		{
 			//tabort sprite
-
-			var tower = rangedTower.Instantiate<RangedTornScript>();
-
-		
-		tower.Position = mousePosision;
-		
-		lvl.AddChild(tower);
-		isPlacing= false;
+			
+			PlaceTower();
 		}
+	}
+
+	public void PlaceTower() {
+		
+		if (towerIndex == 1) {
+				tower = rangedTower.Instantiate<RangedTornScript>();
+
+			} else if (towerIndex == 2) {
+				tower = valkyrieTower.Instantiate<ValkyrieTornScript>();
+			}
+			tower.Position = mousePosition;
+			
+			lvl.AddChild(tower);
+			isPlacing= false;
 	}
 	
 
@@ -41,10 +55,22 @@ public partial class Main : Node2D
 		//ändra för att se pengar
 		if (true)
 		{
-		isPlacing = true;
+			towerIndex = 1;
+			isPlacing = true;
 			//lägg en ikon som flöjer musen	
 		}
 	
 	}
+
+	public void _on_valkyrie_torn_button_pressed() {
+		
+		if (true) {
+			
+			towerIndex = 2;
+			isPlacing = true;
+		}
+	}
+
+
 
 }

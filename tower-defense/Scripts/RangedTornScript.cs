@@ -99,6 +99,7 @@ public partial class RangedTornScript : StaticBody2D
 			var bullet = bulletScene.Instantiate<Bullet>();
 
 			bullet.GlobalPosition = weapon.GlobalPosition;
+			bullet.GlobalRotation = weapon.GlobalRotation;
 
 			bullet.Velocity = (enemies[0].GlobalPosition - bullet.GlobalPosition).Normalized() * bulletMoveSpeed;
 			GetTree().CurrentScene.AddChild(bullet);	

@@ -23,7 +23,11 @@ public partial class EnemyScript : CharacterBody2D
 
 		if (enemyHP <= 0) {
 			
-			QueueFree();
+			//QueueFree();
+
+			//Temporär test kod
+			GlobalPosition = new Vector2(0,50);
+			enemyHP = 3;
 		}
     }
 
@@ -33,6 +37,13 @@ public partial class EnemyScript : CharacterBody2D
 			enemyHP--;
 			bullet.QueueFree();
 		}
+
+		if (body is ValkyrieTornScript) {
+			
+			enemyHP -= 2;
+			GD.Print("hit");
+		}
+
 
 	}
 
