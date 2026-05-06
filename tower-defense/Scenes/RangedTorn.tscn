@@ -90,6 +90,7 @@ scale = Vector2(2.904762, 2.6666665)
 sprite_frames = SubResource("SpriteFrames_td338")
 animation = &"shot"
 frame_progress = 0.124365345
+speed_scale = 0.66
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="OnArea2dBodyEntered"]
