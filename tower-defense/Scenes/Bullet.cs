@@ -10,10 +10,5 @@ public partial class Bullet : CharacterBody2D
 
 		MoveAndSlide();
 
-		if (GetSlideCollisionCount() > 0) {
-			
-			QueueFree();
-		}
-
 	}
 }
