@@ -14,10 +14,12 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
 font_size = 57
 
-[node name="Main" type="Node2D" unique_id=2038645535 node_paths=PackedStringArray("moneyText")]
+[node name="Main" type="Node2D" unique_id=2038645535 node_paths=PackedStringArray("moneyText", "healthPointsText")]
 script = ExtResource("1_8gbba")
 moneyText = NodePath("CanvasLayer/money")
 money = 50
+healthPointsText = NodePath("CanvasLayer/HP")
+healthPoints = 50
 rangedTower = ExtResource("2_kry3j")
 valkyrieTower = ExtResource("3_21xkr")
 
