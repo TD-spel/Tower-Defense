@@ -1,13 +1,11 @@
-[gd_scene format=3 uid="uid://pgl3u8715eah"]
+[gd_scene format=3 uid="uid://dmykxkx5bqrcx"]
 
 [ext_resource type="Script" uid="uid://kd82m6qa23ix" path="res://Scripts/ValkyrieTornScript.cs" id="1_ipd87"]
+[ext_resource type="Texture2D" uid="uid://0o4peqtcsr34" path="res://Assets/sprites/valkory-yxa.png" id="3_yuys0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41r20"]
+radius = 14.312881
 height = 30.136995
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5mmoa"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ipd87"]
 
 [node name="Valkyrie" type="StaticBody2D" unique_id=589767315]
 collision_layer = 8
@@ -15,16 +13,11 @@ collision_mask = 0
 script = ExtResource("1_ipd87")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1646023906]
-position = Vector2(0, -72)
-scale = Vector2(1, 4.7599964)
+position = Vector2(0, -46)
+scale = Vector2(1.6069441, 3.512247)
 shape = SubResource("CapsuleShape2D_41r20")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=382469670]
-position = Vector2(0, -2.3109262)
-scale = Vector2(19.526724, 15.307501)
-mesh = SubResource("CapsuleMesh_5mmoa")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=604754483]
-position = Vector2(0, 1.1444092e-05)
-scale = Vector2(90.10206, 90.10206)
-mesh = SubResource("SphereMesh_ipd87")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428734684]
+position = Vector2(0, -37.00001)
+scale = Vector2(3.915094, 3.1910088)
+texture = ExtResource("3_yuys0")

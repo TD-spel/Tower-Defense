@@ -1,6 +1,9 @@
 [gd_scene format=4 uid="uid://cdh3u8dsqbmaj"]
 
 [ext_resource type="Texture2D" uid="uid://wc74isjojrjg" path="res://Assets/sprites/TD-spel kopiera.png" id="1_djppv"]
+[ext_resource type="Script" uid="uid://slusd8kfqxkp" path="res://Scripts/Wavemaniger.cs" id="2_op2lt"]
+[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="3_uuqka"]
+[ext_resource type="PackedScene" uid="uid://c0cdtqca04jht" path="res://Scenes/enemy_2.tscn" id="4_uuqka"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dcw7g"]
 texture = ExtResource("1_djppv")
@@ -310,13 +313,21 @@ position = Vector2(581, 328)
 [node name="enemypath1" type="Path2D" parent="." unique_id=177796454]
 curve = SubResource("Curve2D_djppv")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="enemypath1" unique_id=1908888490]
-position = Vector2(534.7762, 145.91994)
-rotation = -0.330548
-progress = 950.7
-
 [node name="deathSown" type="Area2D" parent="." unique_id=1480096270]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="deathSown" unique_id=731845972]
 position = Vector2(1009.75, 442)
 shape = SubResource("RectangleShape2D_dcw7g")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1609879825 node_paths=PackedStringArray("enemyspwantimer")]
+position = Vector2(452.74393, 514.96063)
+rotation = -1.0498866
+script = ExtResource("2_op2lt")
+enemyspwantimer = NodePath("../EnemySpwanTimer")
+enemyT1 = ExtResource("3_uuqka")
+enemyT2 = ExtResource("4_uuqka")
+
+[node name="EnemySpwanTimer" type="Timer" parent="." unique_id=132479953]
+wait_time = 2.0
+
+[connection signal="timeout" from="EnemySpwanTimer" to="Node2D" method="_OnSpwanEnemy"]

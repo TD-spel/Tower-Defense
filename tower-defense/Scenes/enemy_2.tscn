@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dg46avvnirawy"]
+[gd_scene format=3 uid="uid://c0cdtqca04jht"]
 
-[ext_resource type="Script" uid="uid://phb2ilfxm1c0" path="res://Scripts/EnemyScript.cs" id="1_4kv35"]
+[ext_resource type="Script" uid="uid://phb2ilfxm1c0" path="res://Scripts/EnemyScript.cs" id="1_t3d2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqquq"]
 
@@ -9,19 +9,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1htj"]
 size = Vector2(100, 100)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=556481276]
+[node name="Enemy2" type="CharacterBody2D" unique_id=556481276]
 collision_layer = 8
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_4kv35")
-enemyHP = 4
+script = ExtResource("1_t3d2o")
+enemyHP = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1002559523]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_gqquq")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=1420961605]
-modulate = Color(0.48516232, 9.62615e-07, 2.8878452e-07, 1)
+modulate = Color(0.06664723, 0.18255058, 0.6071133, 1)
 scale = Vector2(20.086437, 20.086437)
 mesh = SubResource("BoxMesh_tt7e2")
 

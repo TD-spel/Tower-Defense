@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bw4smeq8y1awk"]
+
+[ext_resource type="PackedScene" uid="uid://bw66dwv1t52m2" path="res://Scenes/valkory-bas.tscn" id="1_lj5gf"]
+[ext_resource type="PackedScene" uid="uid://dmykxkx5bqrcx" path="res://Scenes/valkyrie.tscn" id="2_q07hr"]
+
+[node name="Node2D" unique_id=1721792609 instance=ExtResource("1_lj5gf")]
+
+[node name="Valkyrie" parent="." index="1" unique_id=589767315 instance=ExtResource("2_q07hr")]
+scale = Vector2(0.42047969, 0.43974814)

@@ -9,8 +9,8 @@ public partial class EnemyScript : CharacterBody2D
 	[Export]
 	private float enemyMoveSpeed = 5f;
 
-
-
+	[Export]
+	private int enemyMoney = 50;
 
 	public override void _Ready() {
 

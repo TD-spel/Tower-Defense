@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dr6poaygpys3y" path="res://Scripts/Main.cs" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cdh3u8dsqbmaj" path="res://Scenes/banna_1.tscn" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://oydyn1rk58w6" path="res://Scenes/RangedTorn.tscn" id="2_kry3j"]
-[ext_resource type="PackedScene" uid="uid://pgl3u8715eah" path="res://Scenes/valkyrie.tscn" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://bw4smeq8y1awk" path="res://Scenes/valkyrie-torn.tscn" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bjy77hq5vam20" path="res://Scenes/ranged_torn_button.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="5_kry3j"]
 

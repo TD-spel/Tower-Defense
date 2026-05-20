@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bw66dwv1t52m2"]
+
+[ext_resource type="Texture2D" uid="uid://c13ish2xp16jy" path="res://Assets/sprites/valkory-bas.png" id="1_6rcrh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3pw3"]
+radius = 14.0
+
+[node name="Node2D" type="StaticBody2D" unique_id=1721792609]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800602366]
+shape = SubResource("CircleShape2D_e3pw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=211465731]
+texture = ExtResource("1_6rcrh")
