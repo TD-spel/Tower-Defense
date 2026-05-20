@@ -4,10 +4,18 @@ using System;
 
 public partial class Main : Node2D
 {
+	
 
 	Node2D lvl;
+
+	[Export] private Label moneyText;
+	[Export] private int money;
+
 	[Export] private PackedScene rangedTower;
+	[Export] private int rangedTowerPrice = 30;
 	[Export] private PackedScene valkyrieTower;
+	[Export] private int valkyrieTowerPrice = 45;
+	
 
 	StaticBody2D tower;
 	Vector2 mousePosition;
@@ -21,11 +29,13 @@ public partial class Main : Node2D
 	public override void _Ready()
 	{
 		lvl = GetNode<Node2D>("banna1");
+		moneyText.Text = "$" + money.ToString();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{ 
+
 		mousePosition = GetGlobalMousePosition();
 		if( isPlacing == true  && Input.IsActionJustPressed("leftClick"))
 		{
@@ -37,14 +47,18 @@ public partial class Main : Node2D
 
 	public void PlaceTower() {
 		
-		if (towerIndex == 1) {
+		//Kollar vilket värde towerIndex har och bestämmer därefter vilket torn som ska placeras.
+		//Den kollar också ifall man har råd att köpa tornet.
+		if (towerIndex == 1 && money >= rangedTowerPrice) {
 				tower = rangedTower.Instantiate<RangedTornScript>();
-
-			} else if (towerIndex == 2) {
+				money -= rangedTowerPrice;
+			} else if (towerIndex == 2 && money > valkyrieTowerPrice) {
 				tower = valkyrieTower.Instantiate<ValkyrieTornScript>();
-			}
+				money -= valkyrieTowerPrice;
+			} else { return; }
 			tower.Position = mousePosition;
 			
+			moneyText.Text = "$" + money.ToString();
 			lvl.AddChild(tower);
 			isPlacing= false;
 	}

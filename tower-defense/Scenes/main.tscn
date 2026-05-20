@@ -6,9 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://bw4smeq8y1awk" path="res://Scenes/valkyrie-torn.tscn" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bjy77hq5vam20" path="res://Scenes/ranged_torn_button.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="5_kry3j"]
+[ext_resource type="Texture2D" uid="uid://p60xj8mo8k88" path="res://icon.svg" id="6_6bp64"]
 
-[node name="Main" type="Node2D" unique_id=2038645535]
+[sub_resource type="LabelSettings" id="LabelSettings_21xkr"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_344ge"]
+font_size = 57
+
+[node name="Main" type="Node2D" unique_id=2038645535 node_paths=PackedStringArray("moneyText")]
 script = ExtResource("1_8gbba")
+moneyText = NodePath("CanvasLayer/money")
+money = 50
 rangedTower = ExtResource("2_kry3j")
 valkyrieTower = ExtResource("3_21xkr")
 
@@ -19,20 +28,44 @@ valkyrieTower = ExtResource("3_21xkr")
 [node name="rangedTornButton" parent="CanvasLayer" unique_id=1684109991 instance=ExtResource("3_kry3j")]
 light_mask = 1
 visibility_layer = 131
-offset_left = 983.0
-offset_top = 37.928
-offset_right = 1039.3359
-offset_bottom = 68.92799
-text = "Ranged Tower"
+offset_left = 988.0
+offset_top = 143.928
+offset_right = 1044.3359
+offset_bottom = 174.928
+text = "Ranged Tower
+$30"
 
 [node name="valkyrieTornButton" parent="CanvasLayer" unique_id=1746856956 instance=ExtResource("3_kry3j")]
 light_mask = 1
 visibility_layer = 131
-offset_left = 983.0
-offset_top = 162.928
-offset_right = 1039.3359
-offset_bottom = 193.928
-text = "Valkyrie Tower"
+offset_left = 988.0
+offset_top = 268.928
+offset_right = 1045.3359
+offset_bottom = 299.92798
+text = "Valkyrie Tower
+$45"
+
+[node name="money" type="Label" parent="CanvasLayer" unique_id=911283488]
+offset_left = 986.0
+offset_top = 14.0
+offset_right = 1136.0
+offset_bottom = 142.0
+text = "$50"
+label_settings = SubResource("LabelSettings_21xkr")
+
+[node name="HP" type="Label" parent="CanvasLayer" unique_id=839909078]
+offset_left = 1060.75
+offset_top = 571.0
+offset_right = 1163.75
+offset_bottom = 649.0
+text = "50"
+label_settings = SubResource("LabelSettings_344ge")
+
+[node name="Icon" type="Sprite2D" parent="CanvasLayer" unique_id=1655390236]
+modulate = Color(0.95689553, 0, 0.1754863, 1)
+position = Vector2(1023.75006, 609.00006)
+scale = Vector2(0.4023441, 0.4023441)
+texture = ExtResource("6_6bp64")
 
 [node name="Enemy" parent="." unique_id=556481276 instance=ExtResource("5_kry3j")]
 position = Vector2(109, 450)
