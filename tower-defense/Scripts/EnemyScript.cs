@@ -3,13 +3,18 @@ using System;
 
 public partial class EnemyScript : CharacterBody2D
 {
+	[Signal]
+	public delegate void EnemyDeathEventHandler();
+
+
+	[Export]
+	private int enemyIndex = 1;
+
 	[Export]
 	private int enemyHP = 3;
 	
 	[Export]
 	private float enemyMoveSpeed = 5f;
-
-
 
 
 	public override void _Ready() {
@@ -21,21 +26,30 @@ public partial class EnemyScript : CharacterBody2D
     {
         TempMovement();
 
-		if (enemyHP <= 0) {
-			
-			//QueueFree();
-
-			//Temporär test kod
-			GlobalPosition = new Vector2(0,50);
-			enemyHP = 3;
-		}
+        EnemyDeath();
     }
 
-	public void _on_area_2d_body_entered(Node2D body) {
+    private void EnemyDeath()
+    {
+        if (enemyHP <= 0)
+        {
+
+			EmitSignal(SignalName.EnemyDeath);
+
+			//QueueFree();
+
+            //Temporär test kod
+            GlobalPosition = new Vector2(0, 50);
+            enemyHP = 3;
+        }
+    }
+
+    public void _on_area_2d_body_entered(Node2D body) {
 		
 		if (body is Bullet bullet) {
 			enemyHP--;
 			bullet.QueueFree();
+
 		}
 
 		if (body is ValkyrieTornScript) {

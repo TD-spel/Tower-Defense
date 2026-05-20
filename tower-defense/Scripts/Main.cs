@@ -9,7 +9,9 @@ public partial class Main : Node2D
 	Node2D lvl;
 
 	[Export] private Label moneyText;
-	[Export] private int money;
+	[Export] public int money;
+	[Export] private Label healthPointsText;
+	[Export] private int healthPoints;
 
 	[Export] private PackedScene rangedTower;
 	[Export] private int rangedTowerPrice = 30;
@@ -30,6 +32,15 @@ public partial class Main : Node2D
 	{
 		lvl = GetNode<Node2D>("banna1");
 		moneyText.Text = "$" + money.ToString();
+		healthPointsText.Text = healthPoints.ToString();
+
+		DeathZone deathZone = GetNode<DeathZone>("banna1/deathZone");
+
+		deathZone.EnemyReachedGoal += OnEnemyReachedGoal;
+
+		EnemyScript enemyScript = GetNode<EnemyScript>("Enemy");
+
+		enemyScript.EnemyDeath += OnEnemyDeath;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,6 +94,23 @@ public partial class Main : Node2D
 			towerIndex = 2;
 			isPlacing = true;
 		}
+	}
+
+	private void OnEnemyReachedGoal() {
+		
+		healthPoints--;
+		healthPointsText.Text = healthPoints.ToString();
+	}
+
+	private void OnEnemyDeath() {
+		
+		HandleMoney();
+	}
+
+	private void HandleMoney() {
+		
+		money += 10;
+		moneyText.Text = money.ToString();
 	}
 
 
