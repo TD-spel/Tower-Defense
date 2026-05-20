@@ -26,15 +26,15 @@ public partial class EnemyScript : CharacterBody2D
     {
         TempMovement();
 
-        EnemyDeath();
+       // EnemyDeath();
     }
 
-    private void EnemyDeath()
+   /* private void EnemyDeath()
     {
         if (enemyHP <= 0)
         {
 
-			EmitSignal(SignalName.EnemyDeath);
+			//EmitSignal(SignalName.EnemyDeath);
 
 			//QueueFree();
 
@@ -42,7 +42,7 @@ public partial class EnemyScript : CharacterBody2D
             GlobalPosition = new Vector2(0, 50);
             enemyHP = 3;
         }
-    }
+    }*/
 
     public void _on_area_2d_body_entered(Node2D body) {
 		

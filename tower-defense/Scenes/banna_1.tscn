@@ -1,10 +1,9 @@
 [gd_scene format=4 uid="uid://cdh3u8dsqbmaj"]
 
 [ext_resource type="Texture2D" uid="uid://wc74isjojrjg" path="res://Assets/sprites/TD-spel kopiera.png" id="1_djppv"]
+[ext_resource type="Script" uid="uid://crxno1c0pgryc" path="res://Scenes/DeathZone.cs" id="2_dcw7g"]
 [ext_resource type="Script" uid="uid://slusd8kfqxkp" path="res://Scripts/Wavemaniger.cs" id="2_op2lt"]
 [ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="3_uuqka"]
-[ext_resource type="PackedScene" uid="uid://c0cdtqca04jht" path="res://Scenes/enemy_2.tscn" id="4_uuqka"]
-[ext_resource type="Script" uid="uid://crxno1c0pgryc" path="res://Scenes/DeathZone.cs" id="2_dcw7g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dcw7g"]
 texture = ExtResource("1_djppv")
@@ -328,4 +327,12 @@ script = ExtResource("2_dcw7g")
 position = Vector2(1009.75, 442)
 shape = SubResource("RectangleShape2D_dcw7g")
 
+[node name="Node" type="Node2D" parent="." unique_id=1063632981 node_paths=PackedStringArray("enemyspwantimer")]
+script = ExtResource("2_op2lt")
+enemyspwantimer = NodePath("../EnemySpwanTimer")
+enemyT1 = ExtResource("3_uuqka")
+
+[node name="EnemySpwanTimer" type="Timer" parent="." unique_id=2136950894]
+
 [connection signal="body_entered" from="deathZone" to="deathZone" method="_on_body_entered"]
+[connection signal="timeout" from="EnemySpwanTimer" to="Node" method="_OnSpwanEnemy"]
