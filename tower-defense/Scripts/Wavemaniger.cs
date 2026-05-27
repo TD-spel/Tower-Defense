@@ -18,7 +18,7 @@ public partial class Wavemaniger : Node2D
 
 	struct EnemyData
 	{
-		public Sprite2D sprite;
+		public Texture2D sprite;
 		public int enemyHP;
 
 		public float enemyMoveSpeed;
@@ -26,8 +26,8 @@ public partial class Wavemaniger : Node2D
 	}
 	private List<EnemyData> _enemyType = new()
 	{
-		new EnemyData{ enemyHP = 2, enemyMoveSpeed = 2},
-		new EnemyData{ enemyHP = 5, enemyMoveSpeed = 3},
+		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Cannon.png") , enemyHP = 2, enemyMoveSpeed = 2},
+		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Ballong.png"), enemyHP = 5, enemyMoveSpeed = 3},
 	};
 	private List<int> _waveData =new();
 	Path2D enemypath;
@@ -81,10 +81,10 @@ public partial class Wavemaniger : Node2D
 			enemypath.AddChild(enemy_2); break;
 		}*/
 		
-		Node enemy = enemyT1.Instantiate();
+		EnemyScript enemy = enemyT1.Instantiate<EnemyScript>();
 		enemypath.AddChild(enemy);
 		EnemyData d = _enemyType[enemyType];
-		//enemy.Initialize(d.sprite, d.enemyHP, d.enemyMoveSpeed);
+		enemy.Initialize(d.sprite, d.enemyHP, d.enemyMoveSpeed);
 		currentWavePosision++;
 
 		EmitSignal(SignalName.SpawnEnemy);

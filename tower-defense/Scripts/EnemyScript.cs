@@ -10,16 +10,22 @@ public partial class EnemyScript : PathFollow2D
 	[Export]
 	private int enemyIndex = 1;
 
-	[Export]
-	private int enemyHP = 3;
+	int _enemyHP;
 	
-	[Export]
-	private float enemyMoveSpeed = 5f;
+	 float _enemyMoveSpeed;
+
+    public void Initialize(Texture2D sprite, int enemyHP, float enemyMoveSpeed)
+    {
+        GetNode<Sprite2D>("Sprite2D").Texture = sprite;
+        _enemyHP =enemyHP;
+        _enemyMoveSpeed = enemyMoveSpeed;
+    }
 
 	public override void _Process(double delta)
     {
         TempMovement();
 
+<<<<<<< Updated upstream
 		ProgressRatio += enemyMoveSpeed * (float) delta * 0.05f;
         OnEnemyDeath();
     }
@@ -27,29 +33,41 @@ public partial class EnemyScript : PathFollow2D
     private void OnEnemyReachedGoal() {
         
         QueueFree();
+=======
+		ProgressRatio += _enemyMoveSpeed * (float) delta * 0.05f;
+       // EnemyDeath();
+>>>>>>> Stashed changes
     }
-
+    
     private void OnEnemyDeath()
     {
-        if (enemyHP <= 0)
+        if (_enemyHP <= 0)
         {
 
 			EmitSignal(SignalName.EnemyDeath);
 
+<<<<<<< Updated upstream
 			QueueFree();
+=======
+			//QueueFree();
+
+            //Temporär test kod
+            GlobalPosition = new Vector2(0, 50);
+            _enemyHP = 3;
+>>>>>>> Stashed changes
         }
     }
 
     public void _on_area_2d_body_entered(Node2D body) {
 		if (body is Bullet bullet) {
-			enemyHP--;
+			_enemyHP--;
 			bullet.QueueFree();
 
 		}
 
 		if (body is ValkyrieTornScript) {
 			
-			enemyHP -= 2;
+			_enemyHP -= 2;
 			GD.Print("hit");
 		}
 
@@ -61,25 +79,25 @@ public partial class EnemyScript : PathFollow2D
         if (Input.IsKeyPressed(Key.D))
         {
 
-            this.Position += new Vector2(enemyMoveSpeed, 0);
+            this.Position += new Vector2(_enemyMoveSpeed, 0);
         }
 
         if (Input.IsKeyPressed(Key.A))
         {
 
-            this.Position += new Vector2(-enemyMoveSpeed, 0);
+            this.Position += new Vector2(-_enemyMoveSpeed, 0);
         }
 
         if (Input.IsKeyPressed(Key.W))
         {
 
-            this.Position += new Vector2(0, -enemyMoveSpeed);
+            this.Position += new Vector2(0, -_enemyMoveSpeed);
         }
 
         if (Input.IsKeyPressed(Key.S))
         {
 
-            this.Position += new Vector2(0, enemyMoveSpeed);
+            this.Position += new Vector2(0, _enemyMoveSpeed);
         }
     }
 
