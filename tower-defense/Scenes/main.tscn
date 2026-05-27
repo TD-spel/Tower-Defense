@@ -18,6 +18,7 @@ script = ExtResource("1_8gbba")
 moneyText = NodePath("CanvasLayer/money")
 money = 50
 healthPointsText = NodePath("CanvasLayer/HP")
+healthPoints = 50
 rangedTower = ExtResource("2_kry3j")
 valkyrieTower = ExtResource("3_21xkr")
 

@@ -16,18 +16,17 @@ public partial class EnemyScript : PathFollow2D
 	[Export]
 	private float enemyMoveSpeed = 5f;
 
-
-	public override void _Ready() {
-
-		
-	}
-
 	public override void _Process(double delta)
     {
         TempMovement();
 
 		ProgressRatio += enemyMoveSpeed * (float) delta * 0.05f;
-       // EnemyDeath();
+        OnEnemyDeath();
+    }
+
+    private void OnEnemyReachedGoal() {
+        
+        QueueFree();
     }
 
     private void OnEnemyDeath()
@@ -37,16 +36,11 @@ public partial class EnemyScript : PathFollow2D
 
 			EmitSignal(SignalName.EnemyDeath);
 
-			//QueueFree();
-
-            //Temporär test kod
-            GlobalPosition = new Vector2(0, 50);
-            enemyHP = 3;
+			QueueFree();
         }
     }
 
     public void _on_area_2d_body_entered(Node2D body) {
-		
 		if (body is Bullet bullet) {
 			enemyHP--;
 			bullet.QueueFree();

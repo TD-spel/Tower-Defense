@@ -9,7 +9,7 @@ public partial class Main : Node2D
 	Node2D lvl;
 
 	[Export] private Label moneyText;
-	[Export] public int money;
+	[Export] private int money;
 	[Export] private Label healthPointsText;
 	[Export] private int healthPoints;
 
@@ -31,7 +31,6 @@ public partial class Main : Node2D
 	public override void _Ready()
 	{
 		lvl = GetNode<Node2D>("banna1");
-		moneyText.Text = "$" + money.ToString();
 		healthPointsText.Text = healthPoints.ToString();
 
 		DeathZone deathZone = GetNode<DeathZone>("banna1/deathZone");
@@ -56,6 +55,8 @@ public partial class Main : Node2D
 			
 			PlaceTower();
 		}
+
+		moneyText.Text = "$" + money.ToString();
 	}
 
 	public void PlaceTower() {
@@ -71,7 +72,7 @@ public partial class Main : Node2D
 			} else { return; }
 			tower.Position = mousePosition;
 			
-			moneyText.Text = "$" + money.ToString();
+
 			lvl.AddChild(tower);
 			isPlacing= false;
 	}
@@ -115,7 +116,7 @@ public partial class Main : Node2D
 	private void OnEnemyDeath() {
 		
 		money += 10;
-		moneyText.Text = money.ToString();
+		
 	}
 
 }

@@ -20,8 +20,10 @@ public partial class RangedTornScript : StaticBody2D
 		enemies= new List<EnemyScript>();
 
 		TimerSetup();
-		
-		shootTimer = new Timer();
+
+        shootTimer = new Timer();
+
+        shootTimer.WaitTime = fireRate;
 		shootTimer.Timeout += OnTimerTimeout;
 
 		AddChild(shootTimer);
