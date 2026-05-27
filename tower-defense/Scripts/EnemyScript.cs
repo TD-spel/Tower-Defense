@@ -10,7 +10,7 @@ public partial class EnemyScript : PathFollow2D
 	[Export]
 	private int enemyIndex = 1;
 
-	int _enemyHP;
+    public int _enemyHP;
 	
 	 float _enemyMoveSpeed;
 
@@ -25,18 +25,8 @@ public partial class EnemyScript : PathFollow2D
     {
         TempMovement();
 
-<<<<<<< Updated upstream
-		ProgressRatio += enemyMoveSpeed * (float) delta * 0.05f;
-        OnEnemyDeath();
-    }
-
-    private void OnEnemyReachedGoal() {
-        
-        QueueFree();
-=======
 		ProgressRatio += _enemyMoveSpeed * (float) delta * 0.05f;
-       // EnemyDeath();
->>>>>>> Stashed changes
+       OnEnemyDeath();
     }
     
     private void OnEnemyDeath()
@@ -46,15 +36,7 @@ public partial class EnemyScript : PathFollow2D
 
 			EmitSignal(SignalName.EnemyDeath);
 
-<<<<<<< Updated upstream
 			QueueFree();
-=======
-			//QueueFree();
-
-            //Temporär test kod
-            GlobalPosition = new Vector2(0, 50);
-            _enemyHP = 3;
->>>>>>> Stashed changes
         }
     }
 

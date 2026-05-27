@@ -13,6 +13,7 @@ public partial class DeathZone : Area2D
 
 			EmitSignal(SignalName.EnemyReachedGoal);
 			enemy.QueueFree();
+			
 		}
 	}
 }

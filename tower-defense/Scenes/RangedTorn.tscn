@@ -43,7 +43,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shot",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="RangedTorn" type="StaticBody2D" unique_id=670863309 node_paths=PackedStringArray("weapon")]
@@ -52,7 +52,6 @@ collision_mask = 16
 script = ExtResource("1_7k5xj")
 bulletScene = ExtResource("2_se1e7")
 weapon = NodePath("Weapon")
-fireRate = 0.4
 bulletMoveSpeed = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=958654501]

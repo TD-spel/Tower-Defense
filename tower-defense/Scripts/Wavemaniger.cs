@@ -15,6 +15,7 @@ public partial class Wavemaniger : Node2D
 	[Export]
 	public PackedScene enemyT2 {get; set;}
 	int currentWavePosision;
+	int currentWave;
 
 	struct EnemyData
 	{
@@ -43,6 +44,7 @@ public partial class Wavemaniger : Node2D
 
 	private void _startWave(int waveIndex)
 	{
+		currentWave = waveIndex;
 	_waveData.Clear();
 	foreach((int type, int count) in waves[waveIndex])
 		{
@@ -60,11 +62,24 @@ public partial class Wavemaniger : Node2D
 	{
 		new (int , int)[]{ (0,4), (0,7), (1,2)},
 		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
+		new (int , int)[]{ (0,4), (0,7), (1,2)},
+		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
+		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
+		new (int , int)[]{ (1,6), (1,7), (1,4), (1,5)},
+		
 	};
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
+
+    public override void _Input(InputEvent @event)
+    {
+		if( @event is InputEventKey e  && e.Keycode == Key.K && e.Pressed)
+		{
+			_startWave(currentWave + 1);
+		}
+    }
 
 	private void _OnSpwanEnemy()
 	{

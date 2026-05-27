@@ -41,7 +41,7 @@ public partial class Main : Node2D
 
 		waveManager.SpawnEnemy += OnEnemySpawn;
 
-
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,7 +67,7 @@ public partial class Main : Node2D
 				tower = rangedTower.Instantiate<RangedTornScript>();
 				money -= rangedTowerPrice;
 			} else if (towerIndex == 2 && money > valkyrieTowerPrice) {
-				tower = valkyrieTower.Instantiate<ValkyrieTornScript>();
+				tower = valkyrieTower.Instantiate<StaticBody2D>();
 				money -= valkyrieTowerPrice;
 			} else { return; }
 			tower.Position = mousePosition;
@@ -98,10 +98,11 @@ public partial class Main : Node2D
 			isPlacing = true;
 		}
 	}
+	
 
 	private void OnEnemyReachedGoal() {
 		
-		healthPoints--;
+		healthPoints --;
 		healthPointsText.Text = healthPoints.ToString();
 	}
 

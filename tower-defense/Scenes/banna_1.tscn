@@ -294,7 +294,7 @@ _data = {
 }
 point_count = 20
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcw7g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuqka"]
 size = Vector2(64.5, 139)
 
 [node name="banna1" type="Node2D" unique_id=765231213]
@@ -313,21 +313,22 @@ position = Vector2(581, 328)
 [node name="enemypath1" type="Path2D" parent="." unique_id=177796454]
 curve = SubResource("Curve2D_djppv")
 
-[node name="deathZone" type="Area2D" parent="." unique_id=1480096270]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("2_dcw7g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="deathZone" unique_id=731845972]
-position = Vector2(1009.75, 442)
-shape = SubResource("RectangleShape2D_dcw7g")
-
 [node name="WaveManager" type="Node2D" parent="." unique_id=1063632981 node_paths=PackedStringArray("enemyspwantimer")]
 script = ExtResource("2_op2lt")
 enemyspwantimer = NodePath("../EnemySpwanTimer")
 enemyT1 = ExtResource("3_uuqka")
 
 [node name="EnemySpwanTimer" type="Timer" parent="." unique_id=2136950894]
+wait_time = 0.5
 
-[connection signal="area_entered" from="deathZone" to="deathZone" method="_on_area_entered"]
+[node name="deathZone" type="Area2D" parent="." unique_id=684535233]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_dcw7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deathZone" unique_id=254928059]
+position = Vector2(1009.75, 442)
+shape = SubResource("RectangleShape2D_uuqka")
+
 [connection signal="timeout" from="EnemySpwanTimer" to="WaveManager" method="_OnSpwanEnemy"]
+[connection signal="area_entered" from="deathZone" to="deathZone" method="_on_area_entered"]
