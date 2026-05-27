@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class EnemyScript : CharacterBody2D
+public partial class EnemyScript : PathFollow2D
 {
 	[Signal]
 	public delegate void EnemyDeathEventHandler();
@@ -26,6 +26,7 @@ public partial class EnemyScript : CharacterBody2D
     {
         TempMovement();
 
+		ProgressRatio += enemyMoveSpeed * (float) delta * 0.05f;
        // EnemyDeath();
     }
 

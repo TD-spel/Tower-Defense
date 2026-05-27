@@ -38,9 +38,9 @@ public partial class Main : Node2D
 
 		deathZone.EnemyReachedGoal += OnEnemyReachedGoal;
 
-		//EnemyScript enemyScript = GetNode<EnemyScript>("Enemy");
+		EnemyScript enemyScript = GetNode<EnemyScript>("Enemy");
 
-		//enemyScript.EnemyDeath += OnEnemyDeath;
+		enemyScript.EnemyDeath += OnEnemyDeath;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

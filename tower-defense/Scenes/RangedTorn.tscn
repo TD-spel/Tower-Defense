@@ -48,7 +48,7 @@ animations = [{
 
 [node name="RangedTorn" type="StaticBody2D" unique_id=670863309 node_paths=PackedStringArray("weapon")]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 16
 script = ExtResource("1_7k5xj")
 bulletScene = ExtResource("2_se1e7")
 weapon = NodePath("Weapon")
@@ -65,7 +65,7 @@ mesh = SubResource("SphereMesh_f7cmv")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=692589559]
 scale = Vector2(15.880001, 15.880001)
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2095031064]
 shape = SubResource("CircleShape2D_80hiw")

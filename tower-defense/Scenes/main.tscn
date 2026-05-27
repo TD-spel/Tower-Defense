@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://oydyn1rk58w6" path="res://Scenes/RangedTorn.tscn" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bw4smeq8y1awk" path="res://Scenes/valkyrie-torn.tscn" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bjy77hq5vam20" path="res://Scenes/ranged_torn_button.tscn" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://dg46avvnirawy" path="res://Scenes/Enemy.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://p60xj8mo8k88" path="res://icon.svg" id="6_6bp64"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21xkr"]
@@ -19,7 +18,6 @@ script = ExtResource("1_8gbba")
 moneyText = NodePath("CanvasLayer/money")
 money = 50
 healthPointsText = NodePath("CanvasLayer/HP")
-healthPoints = 50
 rangedTower = ExtResource("2_kry3j")
 valkyrieTower = ExtResource("3_21xkr")
 
@@ -68,9 +66,6 @@ modulate = Color(0.95689553, 0, 0.1754863, 1)
 position = Vector2(1023.75006, 609.00006)
 scale = Vector2(0.4023441, 0.4023441)
 texture = ExtResource("6_6bp64")
-
-[node name="Enemy" parent="." unique_id=556481276 instance=ExtResource("5_kry3j")]
-position = Vector2(109, 450)
 
 [connection signal="pressed" from="CanvasLayer/rangedTornButton" to="." method="_on_ranged_torn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/valkyrieTornButton" to="." method="_on_valkyrie_torn_button_pressed"]

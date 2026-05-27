@@ -2,28 +2,17 @@
 
 [ext_resource type="Script" uid="uid://phb2ilfxm1c0" path="res://Scripts/EnemyScript.cs" id="1_4kv35"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1htj"]
+size = Vector2(100, 100)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqquq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tt7e2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1htj"]
-size = Vector2(100, 100)
-
-[node name="Enemy" type="CharacterBody2D" unique_id=556481276]
-collision_layer = 8
-collision_mask = 0
-motion_mode = 1
+[node name="Enemy" type="PathFollow2D" unique_id=870880352]
+loop = false
 script = ExtResource("1_4kv35")
 enemyHP = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1002559523]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_gqquq")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D" unique_id=1420961605]
-modulate = Color(0.48516232, 9.62615e-07, 2.8878452e-07, 1)
-scale = Vector2(20.086437, 20.086437)
-mesh = SubResource("BoxMesh_tt7e2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=316864211]
 collision_layer = 16
@@ -31,5 +20,16 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820119835]
 shape = SubResource("RectangleShape2D_m1htj")
+
+[node name="Sprite2D" type="StaticBody2D" parent="." unique_id=2094677794]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=1002559523]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_gqquq")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Sprite2D/CollisionShape2D" unique_id=1420961605]
+modulate = Color(0.48516232, 9.62615e-07, 2.8878452e-07, 1)
+scale = Vector2(20.086437, 20.086437)
+mesh = SubResource("BoxMesh_tt7e2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
