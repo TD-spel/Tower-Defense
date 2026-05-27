@@ -38,9 +38,11 @@ public partial class Main : Node2D
 
 		deathZone.EnemyReachedGoal += OnEnemyReachedGoal;
 
-		EnemyScript enemyScript = GetNode<EnemyScript>("Enemy");
+		Wavemaniger waveManager = GetNode<Wavemaniger>("banna1/WaveManager");
 
-		enemyScript.EnemyDeath += OnEnemyDeath;
+		waveManager.SpawnEnemy += OnEnemySpawn;
+
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -102,17 +104,18 @@ public partial class Main : Node2D
 		healthPointsText.Text = healthPoints.ToString();
 	}
 
-	private void OnEnemyDeath() {
+	private void OnEnemySpawn() {
 		
-		HandleMoney();
+		
+		EnemyScript enemyScript = GetNode<EnemyScript>("banna1/enemypath1/Enemy");
+
+		enemyScript.EnemyDeath += OnEnemyDeath;
 	}
 
-	private void HandleMoney() {
+	private void OnEnemyDeath() {
 		
 		money += 10;
 		moneyText.Text = money.ToString();
 	}
-
-
 
 }

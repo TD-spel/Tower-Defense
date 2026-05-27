@@ -322,7 +322,7 @@ script = ExtResource("2_dcw7g")
 position = Vector2(1009.75, 442)
 shape = SubResource("RectangleShape2D_dcw7g")
 
-[node name="Node" type="Node2D" parent="." unique_id=1063632981 node_paths=PackedStringArray("enemyspwantimer")]
+[node name="WaveManager" type="Node2D" parent="." unique_id=1063632981 node_paths=PackedStringArray("enemyspwantimer")]
 script = ExtResource("2_op2lt")
 enemyspwantimer = NodePath("../EnemySpwanTimer")
 enemyT1 = ExtResource("3_uuqka")
@@ -330,4 +330,4 @@ enemyT1 = ExtResource("3_uuqka")
 [node name="EnemySpwanTimer" type="Timer" parent="." unique_id=2136950894]
 
 [connection signal="body_entered" from="deathZone" to="deathZone" method="_on_body_entered"]
-[connection signal="timeout" from="EnemySpwanTimer" to="Node" method="_OnSpwanEnemy"]
+[connection signal="timeout" from="EnemySpwanTimer" to="WaveManager" method="_OnSpwanEnemy"]

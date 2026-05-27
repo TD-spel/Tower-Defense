@@ -35,9 +35,9 @@ public partial class RangedTornScript : StaticBody2D
 	}
 
 	//Denna känner av när en body går in tornets range
-	public void OnArea2dBodyEntered(Node2D body) {
-
-		if (body is EnemyScript enemy) {
+	public void _on_area_2d_area_entered(Area2D area) {
+		GD.Print("Hej");
+		if (area.GetParent() is EnemyScript enemy) {
 
 			enemies.Add(enemy);
 			GD.Print("Body Entered");
@@ -45,8 +45,8 @@ public partial class RangedTornScript : StaticBody2D
 	}
 
 	//Denna känner av när en body lämnar tornets range.
-	public void OnArea2dBodyExited(Node2D body) {
-		if (body is EnemyScript enemy) {
+	public void _on_area_2d_area_exited(Area2D area) {
+		if (area.GetParent() is EnemyScript enemy) {
 
 			enemies.Remove(enemy);
 			GD.Print("Body Exited");

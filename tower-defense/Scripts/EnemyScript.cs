@@ -30,12 +30,12 @@ public partial class EnemyScript : PathFollow2D
        // EnemyDeath();
     }
 
-   /* private void EnemyDeath()
+    private void OnEnemyDeath()
     {
         if (enemyHP <= 0)
         {
 
-			//EmitSignal(SignalName.EnemyDeath);
+			EmitSignal(SignalName.EnemyDeath);
 
 			//QueueFree();
 
@@ -43,7 +43,7 @@ public partial class EnemyScript : PathFollow2D
             GlobalPosition = new Vector2(0, 50);
             enemyHP = 3;
         }
-    }*/
+    }
 
     public void _on_area_2d_body_entered(Node2D body) {
 		

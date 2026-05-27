@@ -4,15 +4,19 @@ using System.Collections.Generic;
 
 public partial class Wavemaniger : Node2D
 {
+
+	[Signal]
+	public delegate void SpawnEnemyEventHandler();
+
 	[Export]
 	private Timer enemyspwantimer;
 	[Export]
 	public PackedScene enemyT1 {get; set;}
 	[Export]
 	public PackedScene enemyT2 {get; set;}
- int currentWavePosision;
+	int currentWavePosision;
 
- struct EnemyData
+	struct EnemyData
 	{
 		public Sprite2D sprite;
 		public int enemyHP;
@@ -81,7 +85,9 @@ public partial class Wavemaniger : Node2D
 		enemypath.AddChild(enemy);
 		EnemyData d = _enemyType[enemyType];
 		//enemy.Initialize(d.sprite, d.enemyHP, d.enemyMoveSpeed);
-	currentWavePosision++;
+		currentWavePosision++;
+
+		EmitSignal(SignalName.SpawnEnemy);
 		
 	}
 }
