@@ -327,7 +327,7 @@ collision_mask = 16
 script = ExtResource("2_dcw7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="deathZone" unique_id=254928059]
-position = Vector2(1009.75, 442)
+position = Vector2(1045, 442)
 shape = SubResource("RectangleShape2D_uuqka")
 
 [connection signal="timeout" from="EnemySpwanTimer" to="WaveManager" method="_OnSpwanEnemy"]

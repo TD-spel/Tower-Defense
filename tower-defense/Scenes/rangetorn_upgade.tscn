@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://begw75ny0rx66"]
+
+[ext_resource type="Script" path="res://Scripts/Button.cs" id="1_7yg0p"]
+
+[node name="RangetornUpgade" type="Button" unique_id=1445389766]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "fierrrate 100$"
+script = ExtResource("1_7yg0p")

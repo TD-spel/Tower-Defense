@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4smeq8y1awk" path="res://Scenes/valkyrie-torn.tscn" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://bjy77hq5vam20" path="res://Scenes/ranged_torn_button.tscn" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://p60xj8mo8k88" path="res://icon.svg" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://begw75ny0rx66" path="res://Scenes/rangetorn_upgade.tscn" id="7_6bp64"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_21xkr"]
 font_size = 50
@@ -13,7 +14,11 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_344ge"]
 font_size = 57
 
-[node name="Main" type="Node2D" unique_id=2038645535 node_paths=PackedStringArray("moneyText", "healthPointsText")]
+[sub_resource type="LabelSettings" id="LabelSettings_6bp64"]
+font_size = 201
+font_color = Color(0.70980394, 0, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=2038645535 node_paths=PackedStringArray("moneyText", "healthPointsText", "valacryUpgade", "GameOver")]
 script = ExtResource("1_8gbba")
 moneyText = NodePath("CanvasLayer/money")
 money = 50
@@ -21,6 +26,8 @@ healthPointsText = NodePath("CanvasLayer/HP")
 healthPoints = 50
 rangedTower = ExtResource("2_kry3j")
 valkyrieTower = ExtResource("3_21xkr")
+valacryUpgade = NodePath("CanvasLayer/valkeryUpgade")
+GameOver = NodePath("CanvasLayer/Label")
 
 [node name="banna1" parent="." unique_id=765231213 instance=ExtResource("2_jjvhh")]
 
@@ -29,20 +36,20 @@ valkyrieTower = ExtResource("3_21xkr")
 [node name="rangedTornButton" parent="CanvasLayer" unique_id=1684109991 instance=ExtResource("3_kry3j")]
 light_mask = 1
 visibility_layer = 131
-offset_left = 988.0
-offset_top = 143.928
-offset_right = 1044.3359
-offset_bottom = 174.928
+offset_left = 1002.0
+offset_top = 141.928
+offset_right = 1054.3359
+offset_bottom = 169.928
 text = "Ranged Tower
 $30"
 
 [node name="valkyrieTornButton" parent="CanvasLayer" unique_id=1746856956 instance=ExtResource("3_kry3j")]
 light_mask = 1
 visibility_layer = 131
-offset_left = 988.0
-offset_top = 268.928
-offset_right = 1045.3359
-offset_bottom = 299.92798
+offset_left = 1003.0
+offset_top = 317.928
+offset_right = 1060.3359
+offset_bottom = 348.92798
 text = "Valkyrie Tower
 $45"
 
@@ -68,5 +75,30 @@ position = Vector2(1023.75006, 609.00006)
 scale = Vector2(0.4023441, 0.4023441)
 texture = ExtResource("6_6bp64")
 
+[node name="RangetornUpgade" parent="CanvasLayer" unique_id=1445389766 instance=ExtResource("7_6bp64")]
+offset_left = 1006.0
+offset_top = 265.0
+offset_right = 1120.0
+offset_bottom = 296.0
+script = null
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1977312851]
+visible = false
+offset_top = 175.0
+offset_right = 1151.0
+offset_bottom = 449.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_6bp64")
+
+[node name="valkeryUpgade" type="Button" parent="CanvasLayer" unique_id=1010935489]
+visible = false
+offset_left = 1006.0
+offset_top = 445.0
+offset_right = 1132.0
+offset_bottom = 485.0
+text = "add axe 200$"
+
 [connection signal="pressed" from="CanvasLayer/rangedTornButton" to="." method="_on_ranged_torn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/valkyrieTornButton" to="." method="_on_valkyrie_torn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RangetornUpgade" to="." method="_on_rangetorn_upgade_pressed"]
+[connection signal="pressed" from="CanvasLayer/valkeryUpgade" to="." method="_on_button_pressed"]

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 public partial class Wavemaniger : Node2D
 {
@@ -25,10 +26,13 @@ public partial class Wavemaniger : Node2D
 		public float enemyMoveSpeed;
 
 	}
+	//lista över de olika enemys med olika atribut
 	private List<EnemyData> _enemyType = new()
 	{
 		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Cannon.png") , enemyHP = 2, enemyMoveSpeed = 2},
 		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Ballong.png"), enemyHP = 5, enemyMoveSpeed = 3},
+		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Cannon-camo.png") , enemyHP = 8, enemyMoveSpeed = 2},
+		new EnemyData{sprite=GD.Load<Texture2D>("res://Assets/sprites/Ballong-camo.png"), enemyHP = 12, enemyMoveSpeed = 3},
 	};
 	private List<int> _waveData =new();
 	Path2D enemypath;
@@ -41,7 +45,7 @@ public partial class Wavemaniger : Node2D
 		_startWave(0);
 
 	}
-
+	//startar upp waven och sedan ränsar för att kunna starta nästa
 	private void _startWave(int waveIndex)
 	{
 		currentWave = waveIndex;
@@ -58,14 +62,17 @@ public partial class Wavemaniger : Node2D
 		enemyspwantimer.Start();
 		
 	}
+	// skappar alla olika Waves där fösta sifran är typen av enemy och andra är antal
 	private List<(int,int)[]> waves = new()
 	{
 		new (int , int)[]{ (0,4), (0,7), (1,2)},
 		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
 		new (int , int)[]{ (0,4), (0,7), (1,2)},
+		new (int , int)[]{ (1,6), (0,7), (2,4), (2,5)},
 		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
-		new (int , int)[]{ (0,6), (0,7), (1,4), (1,5)},
-		new (int , int)[]{ (1,6), (1,7), (1,4), (1,5)},
+		new (int , int)[]{ (2,6), (1,7), (2,4), (3,5),(2,5),(2,2),(3,6),(1,11)},
+		new (int , int)[]{ (2,6), (1,7), (2,4), (3,5),(2,5),(2,2),(3,6),(1,11)},
+		new (int , int)[]{ (3,6), (1,17), (2,9), (3,5),(2,10),(2,6),(3,6),(0,20)},
 		
 	};
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,12 +82,12 @@ public partial class Wavemaniger : Node2D
 
     public override void _Input(InputEvent @event)
     {
-		if( @event is InputEventKey e  && e.Keycode == Key.K && e.Pressed)
+		if( @event is InputEventKey e  && e.Keycode == Key.K && e.Pressed && currentWave <= 7)
 		{
 			_startWave(currentWave + 1);
 		}
     }
-
+// skapar en enemy med de atriburen de ska ha gör även att nästa del av waven kan starta.
 	private void _OnSpwanEnemy()
 	{
 		if (currentWavePosision>= _waveData.Count) return;

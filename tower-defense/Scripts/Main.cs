@@ -17,8 +17,12 @@ public partial class Main : Node2D
 	[Export] private int rangedTowerPrice = 30;
 	[Export] private PackedScene valkyrieTower;
 	[Export] private int valkyrieTowerPrice = 45;
-	
 
+	[Export] private Button valacryUpgade;
+
+	[Export] private Label GameOver;
+	
+	float _fireRate;
 	StaticBody2D tower;
 	Vector2 mousePosition;
 
@@ -41,13 +45,14 @@ public partial class Main : Node2D
 
 		waveManager.SpawnEnemy += OnEnemySpawn;
 
+		_fireRate = rangedTower.Instantiate<RangedTornScript>().fireRate;
 		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{ 
-
+		moneyText.Text = "$" + money.ToString();
 		mousePosition = GetGlobalMousePosition();
 		if( isPlacing == true  && Input.IsActionJustPressed("leftClick"))
 		{
@@ -56,7 +61,7 @@ public partial class Main : Node2D
 			PlaceTower();
 		}
 
-		moneyText.Text = "$" + money.ToString();
+		
 	}
 
 	public void PlaceTower() {
@@ -98,12 +103,39 @@ public partial class Main : Node2D
 			isPlacing = true;
 		}
 	}
+
+	public void _on_rangetorn_upgade_pressed()
+	{
+		
+		if(money >= 100)
+		{
+		_fireRate-=0.025f;
+		money-=100;	
+		
+		}
+	}
+
+	/*public void _on_button_pressed()
+	{
+		GD.Print("valkyrie upgraderas");
+		Node parent =valkyrieTower.Instantiate<StaticBody2D>();
+
+    	Node nyChild = valkyrieTower.Instantiate<StaticBody2D>().GetNode("Valkyrie").Duplicate();
+
+    	parent.AddChild(nyChild);
+	}*/
 	
 
 	private void OnEnemyReachedGoal() {
 		
 		healthPoints --;
 		healthPointsText.Text = healthPoints.ToString();
+
+		if(healthPoints < 1)
+		{
+			GameOver.Visible = true;
+			
+		}
 	}
 
 	private void OnEnemySpawn() {
@@ -117,7 +149,7 @@ public partial class Main : Node2D
 	private void OnEnemyDeath() {
 		
 		money += 10;
-		
+		moneyText.Text = "$" + money.ToString();
 	}
 
 }

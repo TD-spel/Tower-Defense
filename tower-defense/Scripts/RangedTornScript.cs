@@ -8,7 +8,7 @@ public partial class RangedTornScript : StaticBody2D
 
 	[Export] private PackedScene bulletScene;
 	[Export] private Node2D weapon;
-	[Export] private float fireRate = 1f;
+	[Export] public float fireRate = 1f;
 	[Export] private float bulletMoveSpeed = 10f;
 
 	private AnimatedSprite2D animatedSprite2D;
